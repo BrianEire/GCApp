@@ -1,0 +1,5 @@
+target ‘GCApp’ do
+pod 'Mantle'
+pod 'AFNetworking'
+pod 'Toast'
+end
