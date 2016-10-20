@@ -39,6 +39,7 @@
             }];
 }
 
+
 + (NSValueTransformer *)eventEndDateJSONTransformer {
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *dateString, BOOL *success, NSError *__autoreleasing *error) {
         return [self.dateFormatter dateFromString:dateString];
@@ -47,6 +48,7 @@
     }];
 }
 
+
 + (NSValueTransformer *)eventUploadDateJSONTransformer {
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *dateString, BOOL *success, NSError *__autoreleasing *error) {
         return [self.dateFormatter dateFromString:dateString];
@@ -54,6 +56,7 @@
         return [self.dateFormatter stringFromDate:date];
     }];
 }
+
 
 + (NSValueTransformer *)eventModifiedDateJSONTransformer {
     return [MTLValueTransformer transformerUsingForwardBlock:^id(NSString *dateString, BOOL *success, NSError *__autoreleasing *error) {

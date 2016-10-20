@@ -15,20 +15,16 @@ static NSString *const kEventURL = @"http://shrouded-woodland-9458.herokuapp.com
 - (id)init {
     self = [super initWithBaseURL:[NSURL URLWithString:kEventURL]];
     if(!self) return nil;
-    
-   self.responseSerializer = [AFJSONResponseSerializer serializer];
-
+    self.responseSerializer = [AFJSONResponseSerializer serializer];
     return self;
 }
 
 + (id)sharedManager {
     static NetworkSessionManager *_networkSessionManager = nil;
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _networkSessionManager = [[self alloc] init];
     });
-    
     return _networkSessionManager;
 }
 

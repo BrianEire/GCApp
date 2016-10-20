@@ -12,6 +12,14 @@
 #import "EventModel.h"
 #import "UIView+Toast.h"
 
+#define UIColorFromRGB(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(rgbValue & 0xFF))/255.0 \
+alpha:1.0]
+
+#define GREEN 0x77dd77
+
 
 @interface NewEventViewController ()
 
@@ -22,21 +30,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
-    [self.datePicker setDatePickerMode:UIDatePickerModeDate];
+    [self.navigationItem setTitle:@"New Event"];
     
-    [self.datePicker setDatePickerMode:UIDatePickerModeDate];
+    self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
     [self.datePicker addTarget:self action:@selector(onDatePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
     
     UIToolbar * keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)] ;
     [keyboardToolbar setBarStyle:UIBarStyleBlackTranslucent];
     [keyboardToolbar sizeToFit];
-    
     UIBarButtonItem *flexButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    
-    UIBarButtonItem *doneButton1 =[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(hideKeyboard)];
-    NSArray *itemsArray = [NSArray arrayWithObjects:flexButton,doneButton1, nil];
-    
+    UIBarButtonItem *doneButton =[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(hideKeyboard)];
+    [doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(GREEN),NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
+    NSArray *itemsArray = [NSArray arrayWithObjects:flexButton,doneButton, nil];
     [keyboardToolbar setItems:itemsArray];
     
     self.eventStartDateTextField.inputView = self.datePicker;
@@ -48,7 +53,7 @@
     self.dateFormatter = [[NSDateFormatter alloc] init];
     self.dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
     [self.dateFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
-    self.dateFormatter.dateFormat = @"E, d MMM yyyy";
+    self.dateFormatter.dateFormat = @"E, d MMM, yyyy HH:MM";
     
     self.dateFormatterTwo = [[NSDateFormatter alloc] init];
     self.dateFormatterTwo.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
@@ -59,34 +64,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - Textfield
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    return (newLength > 20) ? NO : YES;
-}
-
-
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    return textView.text.length + (text.length - range.length) <= 100;
-}
-
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [textField resignFirstResponder];
-    return YES;
-}
-
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    return YES;
-}
-
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    return YES;
 }
 
 
@@ -122,15 +99,13 @@
     if ([self checkForValidEventInputs]){
    
         NSMutableDictionary *newEventDictionary = [[NSMutableDictionary alloc] init];
-        [newEventDictionary setObject:self.eventNameTextField.text forKey:@"event[name]"];
+        [newEventDictionary setObject:[self.eventNameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] forKey:@"event[name]"];
         [newEventDictionary setObject:[self.dateFormatterTwo stringFromDate:self.eventStartDate] forKey:@"event[start]"];
         [newEventDictionary setObject:[self.dateFormatterTwo stringFromDate:self.eventEndDate] forKey:@"event[end]"];
     
         [[EventAPI sharedManager] newEventWithDictionary:newEventDictionary callbacks:^(BOOL responseModel) {
-        
             [self clearTextFields];
             [self showToast:@"Success" andBody:@"The Event has been created successfully."];
-            
         } failure:^(NSError *error){
          [self showAlertWithError:error];
          }];
@@ -188,6 +163,30 @@
               completion:^(BOOL didTap) {
               }];
 }
+
+
+#pragma mark - Textfield
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    return !([newString length] > 30);
+}
+
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    return YES;
+}
+
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    return YES;
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 
 @end
