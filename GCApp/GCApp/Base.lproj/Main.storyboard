@@ -26,50 +26,79 @@
                                         <rect key="frame" x="0.0" y="65" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OVh-vt-m87" id="WhY-Om-XIh">
-                                            <frame key="frameInset" width="375" height="99"/>
+                                            <frame key="frameInset" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="calendar-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eAr-Rb-cCx">
-                                                    <frame key="frameInset" minX="5" minY="30" width="40" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar-icon" translatesAutoresizingMaskIntoConstraints="NO" id="eAr-Rb-cCx">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="HEz-ef-Dqw"/>
+                                                        <constraint firstAttribute="width" constant="40" id="Wu4-5g-1CK"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xiy-qX-wcN">
-                                                    <frame key="frameInset" minX="50" minY="8" width="256" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xiy-qX-wcN">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="33" id="a4H-AC-raZ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
                                                     <color key="textColor" red="0.44695929249999999" green="1" blue="0.46445922039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Starting:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7f-HN-Y2f">
-                                                    <frame key="frameInset" minX="50" minY="40" width="72" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7f-HN-Y2f">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="72" id="3GQ-N5-a43"/>
+                                                        <constraint firstAttribute="height" constant="15.5" id="lJv-oI-Ed1"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CK-Bx-j2q">
-                                                    <frame key="frameInset" minX="123" minY="40" width="238" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8CK-Bx-j2q">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="lCw-IW-2bq"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ending  :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSJ-Yb-WWK">
-                                                    <frame key="frameInset" minX="50" minY="60" width="72" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ending  :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSJ-Yb-WWK">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="72" id="EL0-iX-AYX"/>
+                                                        <constraint firstAttribute="height" constant="18" id="P3j-iF-9yQ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZU-Hg-hTQ">
-                                                    <frame key="frameInset" minX="123" minY="60" width="238" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZU-Hg-hTQ">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="244" id="4nS-oS-Bfe"/>
+                                                        <constraint firstAttribute="height" constant="18" id="iHQ-4l-aT3"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="Xiy-qX-wcN" firstAttribute="top" secondItem="WhY-Om-XIh" secondAttribute="topMargin" id="2h8-K0-1qd"/>
+                                                <constraint firstItem="Xiy-qX-wcN" firstAttribute="leading" secondItem="eAr-Rb-cCx" secondAttribute="trailing" constant="5" id="8co-aB-Ph2"/>
+                                                <constraint firstItem="TZU-Hg-hTQ" firstAttribute="leading" secondItem="LSJ-Yb-WWK" secondAttribute="trailing" constant="1" id="93o-yx-tAk"/>
+                                                <constraint firstItem="8CK-Bx-j2q" firstAttribute="top" secondItem="Xiy-qX-wcN" secondAttribute="bottom" constant="2" id="9EV-xp-pQj"/>
+                                                <constraint firstItem="LSJ-Yb-WWK" firstAttribute="top" secondItem="Q7f-HN-Y2f" secondAttribute="bottom" constant="4.5" id="A1l-eG-WCh"/>
+                                                <constraint firstItem="eAr-Rb-cCx" firstAttribute="leading" secondItem="WhY-Om-XIh" secondAttribute="leading" constant="5" id="FFo-zn-iOt"/>
+                                                <constraint firstItem="Xiy-qX-wcN" firstAttribute="trailing" secondItem="WhY-Om-XIh" secondAttribute="trailingMargin" id="GhU-Sg-a6d"/>
+                                                <constraint firstItem="LSJ-Yb-WWK" firstAttribute="top" secondItem="Q7f-HN-Y2f" secondAttribute="bottom" constant="4.5" id="H9P-YI-Rv5"/>
+                                                <constraint firstItem="LSJ-Yb-WWK" firstAttribute="leading" secondItem="eAr-Rb-cCx" secondAttribute="trailing" constant="5" id="ImS-Hl-On4"/>
+                                                <constraint firstItem="8CK-Bx-j2q" firstAttribute="top" secondItem="Xiy-qX-wcN" secondAttribute="bottom" constant="2" id="MF6-2h-sn3"/>
+                                                <constraint firstItem="Q7f-HN-Y2f" firstAttribute="top" secondItem="Xiy-qX-wcN" secondAttribute="bottom" constant="2" id="Rpf-uC-4dy"/>
+                                                <constraint firstAttribute="bottom" secondItem="eAr-Rb-cCx" secondAttribute="bottom" constant="30" id="Txy-To-QvF"/>
+                                                <constraint firstItem="TZU-Hg-hTQ" firstAttribute="top" secondItem="8CK-Bx-j2q" secondAttribute="bottom" constant="4" id="X1t-g8-ywr"/>
+                                                <constraint firstItem="eAr-Rb-cCx" firstAttribute="top" secondItem="WhY-Om-XIh" secondAttribute="top" constant="30" id="mPC-xr-Wlk"/>
+                                                <constraint firstItem="8CK-Bx-j2q" firstAttribute="trailing" secondItem="WhY-Om-XIh" secondAttribute="trailingMargin" id="o9S-1P-A71"/>
+                                                <constraint firstItem="Q7f-HN-Y2f" firstAttribute="leading" secondItem="eAr-Rb-cCx" secondAttribute="trailing" constant="5" id="oJ6-Fw-KQj"/>
+                                                <constraint firstItem="8CK-Bx-j2q" firstAttribute="leading" secondItem="Q7f-HN-Y2f" secondAttribute="trailing" constant="1" id="pG7-I5-DJE"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
